@@ -499,9 +499,10 @@ Replaces: qemu-system-x86 (<< 1.7.0+dfsg-2~),
 :ubuntu: qemu-kvm-spice
 Description: QEMU Full virtualization
  QEMU is a fast processor emulator.  This package depends on the
- appropriate qemu-system-$arch to enable KVM to be run.  On x86 it
- also includes a script /usr/bin/kvm which runs qemu-system-x86 in kvm
- mode for backwards compatibility.
+ appropriate qemu-system-$arch to enable KVM to be run.  On x86, 32-
+ and 64-bit ARM, and 64-bit PowerPC it also includes a script
+ /usr/bin/kvm which runs the appropriate qemu-system-$arch in kvm
+ mode.
  .
  Please note that old qemu-kvm configuration files (in /etc/kvm/) are
  no longer used.

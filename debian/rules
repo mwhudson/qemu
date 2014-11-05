@@ -178,8 +178,8 @@ ifeq ($(DEB_HOST_ARCH_OS),linux)
 
 # /usr/bin/kvm compat script.  This needs some more work for other arches
 # How about a manpage for it?
-ifneq ($(filter $(DEB_HOST_ARCH),amd64 i386),)
-	dh_install -pqemu-kvm debian/kvm /usr/bin/
+ifneq ($(filter $(DEB_HOST_ARCH),amd64 i386 x32),)
+	dh_install -pqemu-kvm debian/kvm.x86 /usr/bin/kvm
 	dh_install -pqemu-kvm debian/kvm.1 /usr/share/man/man1/
 ifeq ($(DEB_VENDOR),Ubuntu)
 # on ubuntu there was kvm-spice package/binary which was used in libvirt xml
@@ -187,6 +187,15 @@ ifeq ($(DEB_VENDOR),Ubuntu)
 		usr/bin/qemu-system-x86_64 usr/bin/qemu-system-x86_64-spice
 	dh_installmodules -pqemu-system-x86
 endif
+endif
+ifneq ($(filter $(DEB_HOST_ARCH),arm64),)
+	dh_install -pqemu-kvm debian/kvm.arm64 /usr/bin/kvm
+endif
+ifneq ($(filter $(DEB_HOST_ARCH),armhf armel),)
+	dh_install -pqemu-kvm debian/kvm.arm32 /usr/bin/kvm
+endif
+ifneq ($(filter $(DEB_HOST_ARCH),ppc64 ppc64el),)
+	dh_install -pqemu-kvm debian/kvm.ppc64 /usr/bin/kvm
 endif
 ifeq ($(DEB_VENDOR),Ubuntu)
 # apport hook is ubuntu-specific
