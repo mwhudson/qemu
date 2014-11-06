@@ -193,8 +193,8 @@ endif
 ifneq ($(filter $(DEB_HOST_ARCH),armhf armel),)
 	install -m755 debian/kvm.arm32 debian/qemu-kvm/usr/bin/kvm
 endif
-ifneq ($(filter $(DEB_HOST_ARCH),ppc64 ppc64el),)
-	install -m755 debian/kvm.ppc64 debian/qemu-kvm/usr/bin/kvm
+ifneq ($(filter $(DEB_HOST_ARCH),ppc64 ppc64el powerpc),)
+	install -m755 debian/kvm.powerpc debian/qemu-kvm/usr/bin/kvm
 endif
 ifeq ($(DEB_VENDOR),Ubuntu)
 # apport hook is ubuntu-specific
