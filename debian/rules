@@ -176,8 +176,7 @@ ifeq (${enable_system},enable)
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
 
-# /usr/bin/kvm compat script.  This needs some more work for other arches
-# How about a manpage for it?
+# /usr/bin/kvm compat script.
 ifneq ($(filter $(DEB_HOST_ARCH),amd64 i386 x32),)
 	dh_install -pqemu-kvm debian/kvm.x86 /usr/bin/kvm
 	dh_install -pqemu-kvm debian/kvm.1 /usr/share/man/man1/
